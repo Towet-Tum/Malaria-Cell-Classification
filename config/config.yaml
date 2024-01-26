@@ -1,0 +1,7 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://drive.google.com/file/d/1blB_C3Gq_qRE4ZFSbTS2CKEdGNHtdh2V/view?usp=sharing
+  local_data_file: artifacts/data_ingestion/cell-images-for-detecting-malaria.zip
+  unzip_dir: artifacts/data_ingestion
