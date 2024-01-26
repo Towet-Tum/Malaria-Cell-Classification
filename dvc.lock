@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/MalariaClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 4a4f508ec433b343f30e4584309c1585
+      size: 450
+    - path: src/MalariaClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 6bc2d6d755850cd662e76fdd2e65fa85
+      size: 928
+    outs:
+    - path: artifacts/data_ingestion/dataset
+      hash: md5
+      md5: 033718d30fdd3ebaf9425fc6a15fde14.dir
+      size: 350952589
+      nfiles: 27560
+  training:
+    cmd: python src/MalariaClassifier/pipeline/stage_02_training.py
+    deps:
+    - path: artifacts/data_ingestion/dataset
+      hash: md5
+      md5: 033718d30fdd3ebaf9425fc6a15fde14.dir
+      size: 350952589
+      nfiles: 27560
+    - path: config/config.yaml
+      hash: md5
+      md5: 4a4f508ec433b343f30e4584309c1585
+      size: 450
+    - path: params.yaml
+      hash: md5
+      md5: f4dbaaccee1234ca87d5cc54a09fc82b
+      size: 98
+    - path: src/MalariaClassifier/pipeline/stage_02_training.py
+      hash: md5
+      md5: 5b5c2f062774b4a85f126e755d570879
+      size: 801
+    outs:
+    - path: artifacts/training/xception_model.h5
+      hash: md5
+      md5: dd84c2fdcd261967a4274a35a784a889
+      size: 85300496

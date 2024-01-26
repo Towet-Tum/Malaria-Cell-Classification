@@ -1,0 +1,19 @@
+stages:
+  data_ingestion:
+    cmd: python src/MalariaClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/MalariaClassifier/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/dataset
+
+
+  training:
+    cmd: python src/MalariaClassifier/pipeline/stage_02_training.py
+    deps:
+      - src/MalariaClassifier/pipeline/stage_02_training.py
+      - config/config.yaml
+      - params.yaml
+      - artifacts/data_ingestion/dataset
+    outs:
+      - artifacts/training/xception_model.h5
