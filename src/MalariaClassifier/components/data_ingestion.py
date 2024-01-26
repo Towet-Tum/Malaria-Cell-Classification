@@ -1,6 +1,8 @@
 import gdown
 import zipfile
 import os
+import shutil
+import splitfolders
 from MalariaClassifier import logger
 from MalariaClassifier.entity.config_entity import DataIngestionConfig
 
@@ -39,3 +41,10 @@ class DataIngestion:
         os.makedirs(unzip_path, exist_ok=True)
         with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
             zip_ref.extractall(unzip_path)
+
+    def split_dataset(self):
+        shutil.rmtree(os.path.join("artifacts", "data_ingestion", "cell_images", "cell_images/"))
+        splitfolders.ratio(os.path.join(self.config.unzip_dir, "cell_images"),
+                           self.config.splited_data,
+                           seed=1337, ratio=(.7, .2, .1), group_prefix=None,
+                           move=False)

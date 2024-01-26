@@ -5,5 +5,6 @@ from pathlib import Path
 class DataIngestionConfig:
     root_dir: Path 
     source_URL: Path 
-    local_data_file: Path 
+    local_data_file: Path
     unzip_dir: Path
+    splited_data: Path

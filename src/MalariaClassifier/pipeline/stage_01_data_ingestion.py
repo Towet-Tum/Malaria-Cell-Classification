@@ -13,6 +13,7 @@ class DataIngestionPipeline:
         data_ingestion = DataIngestion(config=data_config)
         data_ingestion.download_file()
         data_ingestion.extract_zip_file()
+        data_ingestion.split_dataset()
 
 
 if __name__ == "__main__":
