@@ -15,6 +15,7 @@
             {% csrf_token %}
             <input type="file" name="upload" id="upload" required> 
             <button type="submit" style="text-align: center; padding: 10px 15px;">Predict</button>
+            <a href="{% url 'train_model' %}" style="text-align: center; padding: 10px 15px;">Train Model</a>
         </form>
     </div>
     <div class="prediction-results">
