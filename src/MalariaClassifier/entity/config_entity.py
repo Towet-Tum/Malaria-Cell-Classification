@@ -20,3 +20,12 @@ class TrainingConfig:
     include_top: bool 
     weights: str
     dataset: Path
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_model: Path
+    test_data: Path
+    all_params: dict
+    mlflow_uri: str
+    params_image_size: list
+    params_batch_size: int

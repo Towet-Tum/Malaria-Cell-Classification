@@ -31,8 +31,8 @@ stages:
       size: 450
     - path: params.yaml
       hash: md5
-      md5: f4dbaaccee1234ca87d5cc54a09fc82b
-      size: 98
+      md5: acb41bf09d1b1adaa96954042c671c8d
+      size: 97
     - path: src/MalariaClassifier/pipeline/stage_02_training.py
       hash: md5
       md5: 5b5c2f062774b4a85f126e755d570879
@@ -40,5 +40,34 @@ stages:
     outs:
     - path: artifacts/training/xception_model.h5
       hash: md5
-      md5: dd84c2fdcd261967a4274a35a784a889
+      md5: 91fd2bde4bd826f502b9fe8d98c22ccd
       size: 85300496
+  evalution:
+    cmd: python src/MalariaClassifier/pipeline/stage_03_evalution.py
+    deps:
+    - path: artifacts/data_ingestion/dataset
+      hash: md5
+      md5: 033718d30fdd3ebaf9425fc6a15fde14.dir
+      size: 350952589
+      nfiles: 27560
+    - path: artifacts/training/xception_model.h5
+      hash: md5
+      md5: 91fd2bde4bd826f502b9fe8d98c22ccd
+      size: 85300496
+    - path: config/config.yaml
+      hash: md5
+      md5: 4a4f508ec433b343f30e4584309c1585
+      size: 450
+    - path: params.yaml
+      hash: md5
+      md5: acb41bf09d1b1adaa96954042c671c8d
+      size: 97
+    - path: src/MalariaClassifier/pipeline/stage_03_evalution.py
+      hash: md5
+      md5: e207fd3ba3765807f15336d836ea5861
+      size: 878
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: ebebe23ac6d88d15e1ade15bac4a8a7d
+      size: 71

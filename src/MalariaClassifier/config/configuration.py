@@ -1,7 +1,9 @@
 import os
 from MalariaClassifier.constants import *
 from MalariaClassifier.utils.common import read_yaml, create_directories
-from MalariaClassifier.entity.config_entity import DataIngestionConfig, TrainingConfig
+from MalariaClassifier.entity.config_entity import (DataIngestionConfig,
+                                                     TrainingConfig,
+                                                     EvaluationConfig)
 
 class ConfigurationManager:
     def __init__(self, 
@@ -41,3 +43,15 @@ class ConfigurationManager:
 
         )
         return training_config
+    
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/xception_model.h5",
+            test_data="artifacts/data_ingestion/dataset/test/",
+            mlflow_uri="https://dagshub.com/Towet-Tum/Malaria-Cell-Classification.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMG_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config

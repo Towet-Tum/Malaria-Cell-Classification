@@ -17,3 +17,15 @@ stages:
       - artifacts/data_ingestion/dataset
     outs:
       - artifacts/training/xception_model.h5
+    
+  evalution:
+    cmd: python src/MalariaClassifier/pipeline/stage_03_evalution.py
+    deps:
+      - src/MalariaClassifier/pipeline/stage_03_evalution.py
+      - artifacts/data_ingestion/dataset
+      - params.yaml
+      - config/config.yaml
+      - artifacts/training/xception_model.h5
+    metrics:
+      - scores.json:
+          cache: False
