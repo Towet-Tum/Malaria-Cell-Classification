@@ -10,10 +10,10 @@ class PredictionPipeline:
         self.filename = filename
 
     def makePrediction(self):
-        train_ds = "/home/towet/Desktop/Visions/OpenProjects/Malaria-Cell-Classification/artifacts/data_ingestion/dataset/train"
+        train_ds = os.path.join("artifacts","data_ingestion","dataset","train/")
         train_datagen = ImageDataGenerator(1./255)
         train_gen = train_datagen.flow_from_directory(train_ds, target_size=(224,224), class_mode='categorical', batch_size=32)
-        model = load_model("/home/towet/Desktop/Visions/OpenProjects/Malaria-Cell-Classification/artifacts/training/xception_model.h5")
+        model = load_model(os.path.join("model", "xception_model.h5"))
         img = image.load_img(self.filename, target_size=(224,224))
         img = image.img_to_array(img)
         img = np.expand_dims(img, axis=0)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from MalariaClassifier.pipeline.predictions import PredictionPipeline, TrainModel
+from MalariaClassifier.pipeline.predictions import PredictionPipeline
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
 media = 'media'
