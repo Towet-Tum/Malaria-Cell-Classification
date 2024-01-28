@@ -25,14 +25,15 @@ export MLFLOW_TRACKING_PASSWORD=39c66009c3d7d6d659cbc691e65a93c46873d3c4
 
 ## Saved password
 
-7cekEE9WEfjAI5sJurF3MemA+mJl1N4Sqvck9owDyy+ACRA4usR7
+xQQJ99j4FWBwjFJ4qY2rv2Eiy+cLDDvW1JceqUFF8F+ACRCqt7Bc
 
-2iJ8Uu0cF+9shcS/SLT0tjXXIBmSaD/Egi+4N83GVQ+ACRDEmMOa
+
+I8I6SL/4TWji9hq2KriMZB6JMT+ugZ97BgdOp9Dpb/+ACRCj5SZv
 
 ## Azure Deployment
 
-docker build -t malaria.azurecr.io/malaria-cell-app:latest
+docker build -t malaria.azurecr.io/malaria:latest .
 
 docker login malaria.azurecr.io
 
-docker push malaria.azurecr.io/malaria-cell-app:latest
+docker push malaria.azurecr.io/malaria:latest
